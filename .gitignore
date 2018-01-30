@@ -1,5 +1,7 @@
 # GA NUXT MODIFICATION
 .nuxt/
+#GA CONFIG
+config/
 
 
 # Logs
