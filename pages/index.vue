@@ -77,8 +77,8 @@ export default {
     },
     onDeleteId(e, arg) {/*
       console.log('onDeleteId ', arg);
-      messageService.remove(arg);
-    }*/
+      messageService.remove(arg);*/
+    }
   },
   mounted() {/*
     messageService.on('created', (message) => {
