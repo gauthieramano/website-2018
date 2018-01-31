@@ -1,6 +1,6 @@
 {
   "host": "52.47.199.102",
-  "port": 80,
+  "port": 8080,
   "public": "../public/",
   "paginate": {
     "default": 10,
