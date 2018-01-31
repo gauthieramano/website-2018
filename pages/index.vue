@@ -35,7 +35,7 @@ import feathers from '@feathersjs/client'
 import socketio from '@feathersjs/socketio-client'
 import io from 'socket.io-client'
 
-const socket = io('http://localhost:3030');
+const socket = io('http://52.47.199.102:3030');
 const app = feathers();
 app.configure(feathers.socketio(socket));
 const messageService = app.service('doubleendservicea');
@@ -62,7 +62,7 @@ export default {
           name: this.myName,
           body: this.myMessage
         }).then(() => {
-          this.myMessage = ''
+          this.myMessage = '';
         })
       }
     },
@@ -73,8 +73,7 @@ export default {
             console.log('EACH ', element._id);
             messageService.remove(element._id);
           })
-          
-        });
+        })
     },
     onDeleteId(e, arg) {
       console.log('onDeleteId ', arg);
@@ -90,7 +89,7 @@ export default {
       console.log('REMOVED ', message);
       this.messages = this.messages.filter((element) => {
         return (element._id !== message._id);
-      });
+      })
     })
   },
   computed: {
