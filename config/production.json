@@ -1,7 +1,6 @@
 {
-  "hostnumber": "52.47.199.102",
   "host": "app.proj9ct.fr",
-  "port": 3030,
+  "port": 80,
   "public": "../public/",
   "paginate": {
     "default": 10,
