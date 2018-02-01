@@ -1,6 +1,6 @@
 {
   "host": "app.proj9ct.fr",
-  "port": 80,
+  "port": 8080,
   "public": "../public/",
   "paginate": {
     "default": 10,
