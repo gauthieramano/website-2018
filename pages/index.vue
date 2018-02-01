@@ -30,7 +30,7 @@
 </template>
 
 <script>
-/*
+
 import feathers from '@feathersjs/client'
 import socketio from '@feathersjs/socketio-client'
 import io from 'socket.io-client'
@@ -39,7 +39,7 @@ const socket = io('http://52.47.199.102:3030');
 const app = feathers();
 app.configure(feathers.socketio(socket));
 const messageService = app.service('doubleendservicea');
-*/
+
 export default {
   data() {
     return {
@@ -48,15 +48,15 @@ export default {
       myMessage: ''
     }
   },
-  asyncData() {/*
+  asyncData() {
     return messageService.find()
       .then((response) => {
         console.log('ASYNDDATA ', response.data);
         return { messages: response.data }
-      })*/
+      })
   },
   methods: {
-    onPost(e) {/*
+    onPost(e) {
       if (this.myName && this.myMessage) { 
         messageService.create({
           name: this.myName,
@@ -64,23 +64,23 @@ export default {
         }).then(() => {
           this.myMessage = '';
         })
-      }*/
+      }
     },
-    onDelete(e) {/*
+    onDelete(e) {
       messageService.find()
         .then((response) => {
           response.data.forEach((element) => {
             console.log('EACH ', element._id);
             messageService.remove(element._id);
           })
-        })*/
+        })
     },
-    onDeleteId(e, arg) {/*
+    onDeleteId(e, arg) {
       console.log('onDeleteId ', arg);
-      messageService.remove(arg);*/
+      messageService.remove(arg);
     }
   },
-  mounted() {/*
+  mounted() {
     messageService.on('created', (message) => {
       console.log('ADD ', message);
       this.messages.push(message);
@@ -90,7 +90,7 @@ export default {
       this.messages = this.messages.filter((element) => {
         return (element._id !== message._id);
       })
-    })*/
+    })
   },
   computed: {
     avecS() {
