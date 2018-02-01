@@ -1,10 +1,10 @@
 {
   "host": "app.proj9ct.fr",
-  "port": 8080,
+  "port": 3030,
   "public": "../public/",
   "paginate": {
     "default": 10,
     "max": 50
   },
-  "mongodb": "mongodb://52.47.207.34:27017/doubleend"
+  "mongodb": "mongodb://db.proj9ct.fr:27017/doubleend"
 }
