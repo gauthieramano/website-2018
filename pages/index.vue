@@ -35,6 +35,7 @@ import feathers from '@feathersjs/client'
 import socketio from '@feathersjs/socketio-client'
 import io from 'socket.io-client'
 
+//const socket = io('http://127.0.0.1:3030');
 const socket = io('http://52.47.199.102:3030');
 const app = feathers();
 app.configure(feathers.socketio(socket));
