@@ -17,7 +17,8 @@ module.exports = function () {
 
     // Use Nuxt's render middleware
     app.use((req, res, next) => {
-      switch (req.accepts('html', 'json')) {
+      switch (req.accepts('html', 'json', 'text/html')) {
+        case 'text/html':
         case 'json': {
           next();
           break;
