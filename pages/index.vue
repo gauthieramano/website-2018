@@ -3,7 +3,7 @@
     <template v-if="messages.length > 0">
       <h1>Message{{ avecS }}</h1>
 
-      <button v-on:click="onDelete">Supprimer le{{ avecS }} message{{ avecS }}</button>
+      <button v-on:click="onDelete">Delete the message{{ avecS }}</button>
       <ul>
         <li v-for="message in messages" class="ligne">
           <div>
@@ -18,13 +18,13 @@
     </template>
 
     <template v-else>
-      <h1 class="marge">Aucun message</h1>
+      <h1 class="marge">No message</h1>
     </template>
 
     <form @submit.prevent="onPost">
       <input type="text" placeholder="name" v-model="myName">
       <textarea rows="5" placeholder="message..." v-model="myMessage"></textarea>
-      <button type="submit">Envoyer</button>
+      <button type="submit">Send</button>
     </form>
   </div>
 </template>
