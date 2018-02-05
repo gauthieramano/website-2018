@@ -26,12 +26,6 @@ module.exports = function () {
           render(req, res, next);
         }
       }
-      switch (res.accepts('text/plain')) {
-        case 'text/plain': {
-          next();
-          break;
-        }
-      }
     });
 
     app.use(notFound());
