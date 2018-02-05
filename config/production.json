@@ -1,5 +1,5 @@
 {
-  "host": "app.proj6ct.com",
+  "host": "https://app.proj6ct.com",
   "port": 3030,
   "public": "../public/",
   "paginate": {
