@@ -17,14 +17,19 @@ module.exports = function () {
 
     // Use Nuxt's render middleware
     app.use((req, res, next) => {
-      switch (req.accepts('html', 'json', 'text/plain')) {
-        case 'text/plain':
+      switch (req.accepts('html', 'json')) {
         case 'json': {
           next();
           break;
         }
         default: {
           render(req, res, next);
+        }
+      }
+      switch (res.accepts('text/plain')) {
+        case 'text/plain': {
+          next();
+          break;
         }
       }
     });
