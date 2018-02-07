@@ -1,57 +1,33 @@
-# doubleend
+# Website
 
-> doubleend nuxt into feathers
+> This is a reactive realtime universal application with server side render.
+https://app.proj6ct.com
 
 ## About
 
-This project uses [Feathers](http://feathersjs.com). An open source web framework for building modern real-time applications.
+This project uses these technologies:
+- [Vue.js](https://vuejs.org)
+- [Node.js](https://nodejs.org)
+- [Feathers](http://feathersjs.com)
+- [Nuxt](https://nuxtjs.org)
+- [Socket.io](https://socket.io)
+- [MongoDB](https://www.mongodb.com)
 
-## Getting Started
+This project is hosted on 2 AWS EC2 instances:
+- one for the Node.js application
+- one for the MongoDB database
 
-Getting up and running is as easy as 1, 2, 3.
+The Node.js AWS EC2 instance uses these technologies:
+- Ubuntu 16.04.3
+- Nginx 1.10.3
+- Node 9.4.0
+- NPM 5.6.0
+- PM2 2.9.3
+- Certbot 0.21.1
 
-1. Make sure you have [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
-2. Install your dependencies
-
-    ```
-    cd path/to/doubleend; npm install
-    ```
-
-3. Start your app
-
-    ```
-    npm start
-    ```
-
-## Testing
-
-Simply run `npm test` and all your tests in the `test/` directory will be run.
-
-## Scaffolding
-
-Feathers has a powerful command line interface. Here are a few things it can do:
-
-```
-$ npm install -g @feathersjs/cli          # Install Feathers CLI
-
-$ feathers generate service               # Generate a new Service
-$ feathers generate hook                  # Generate a new Hook
-$ feathers generate model                 # Generate a new Model
-$ feathers help                           # Show all commands
-```
-
-## Help
-
-For more information on all the things you can do with Feathers visit [docs.feathersjs.com](http://docs.feathersjs.com).
-
-## Changelog
-
-__0.1.0__
-
-- Initial release
+Developer:
+- Gauthier Amano
 
 ## License
 
-Copyright (c) 2016
-
-Licensed under the [MIT license](LICENSE).
+Copyright (c) 2018
