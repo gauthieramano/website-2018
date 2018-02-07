@@ -3,7 +3,7 @@
     <template v-if="messages.length > 0">
       <h1>Message{{ avecS }}</h1>
 
-      <button v-on:click="onDelete">Supprimer the{{ avecS }} message{{ avecS }}</button>
+      <button v-on:click="onDelete">Supprimer le{{ avecS }} message{{ avecS }}</button>
       <ul>
         <li v-for="message in messages" class="ligne">
           <div>
