@@ -13,11 +13,11 @@ https://app.proj6ct.com
 - [Socket.io](https://socket.io)
 - [MongoDB](https://www.mongodb.com)
 
-### This project is hosted on 2 AWS EC2 instances:
+#### This project is hosted on 2 AWS EC2 instances:
 - one for the Node.js application
 - one for the MongoDB database
 
-### The Node.js AWS EC2 instance uses these technologies:
+#### The Node.js AWS EC2 instance uses these technologies:
 - Ubuntu 16.04.3
 - Nginx 1.10.3
 - Node 9.4.0
@@ -25,7 +25,7 @@ https://app.proj6ct.com
 - PM2 2.9.3
 - Certbot 0.21.1
 
-### Developer:
+#### Developer:
 - Gauthier Amano
 
 ## License
