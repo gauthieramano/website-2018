@@ -1,0 +1,128 @@
+@require 'google'
+
+@require '~vuetify/src/stylus/settings/_colors'
+
+$theme := {
+  primary:     $red.darken-2
+  accent:      $red.accent-2
+  secondary:   $grey.lighten-1
+  info:        $blue.lighten-1
+  warning:     $amber.darken-2
+  error:       $red.accent-4
+  success:     $green.lighten-2
+}
+
+@require '~vuetify/src/stylus/main'
+
+
+  .page-enter-active, .page-leave-active
+    transition: opacity .5s
+
+  .page-enter, .page-leave-to
+    opacity: 0
+
+
+  body
+    margin: 0
+    padding: 0
+    font-family: sans-serif
+    font-size: 16px
+
+  h1
+    margin-bottom: 0px
+
+    &.marge
+      margin-bottom: 20px
+
+  ul
+    margin: 0
+    padding: 0
+
+  li
+    position: relative
+
+    &.ligne
+      list-style: none
+      margin-bottom: 20px
+      border-bottom: 1px solid #CCC
+      
+    div
+      display: inline-block
+      
+      &:not(.se)
+        padding-right: 40px
+        
+      &.se
+        position: absolute
+        right: 0px
+        bottom: 0px
+        
+      button
+        margin: 0 0 5px
+        padding: 5px 10px
+        border-radius: 7px
+        font-size: 1.2em
+
+  p
+    margin: 6px 0
+    word-wrap: break-word
+    white-space: pre-wrap
+
+    &.light
+      color: #F99
+
+  div.pointer
+  	cursor: pointer
+
+  div.main
+
+    /*@media all and (max-width: 599px)
+      margin: 20px
+
+    @media all and (min-width: 600px)
+      margin: 40px*/
+
+    width: 100%
+
+    form
+      input
+        display: block
+        /*width: calc(100%-20px)*/
+        width: 100%
+        padding: 10px
+        background-color: #EEE
+        border: 0px
+        border-bottom: 1px solid #009
+        margin-bottom: 20px
+        font-size: 1.2em
+  
+      textarea
+        display: block
+        /*width: calc(100%-20px)*/
+        width: 100%
+        padding: 10px
+        background-color: #EEE
+        border: 0px
+        border-bottom: 1px solid #009
+        font-size: 1.2em
+        resize: none
+  
+      button
+        padding: 20px
+        background-color: #009
+        font-size: 1.2em
+  
+        &:hover
+          background-color: #03F
+ 
+    button
+      margin: 20px 0
+      padding: 10px 20px
+      color: #FFF
+      background-color: #900
+      border-radius: 10px
+      border-width: 0
+      font-size: 1em
+  
+      &:hover
+        background-color: #F30

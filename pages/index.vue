@@ -1,9 +1,13 @@
 <template>
   <div class="main">
+    <div class="pointer" @click="navigationSwitch">
+      <v-icon v-if="navig" large>label</v-icon>
+      <v-icon v-else large>label_outline</v-icon>
+    </div>
     <template v-if="messages.length > 0">
       <h1>Message{{ avecS }}</h1>
 
-      <button v-on:click="onDelete">Supprimer le{{ avecS }} message{{ avecS }}</button>
+      <button @click="onDelete">Supprimer le{{ avecS }} message{{ avecS }}</button>
       <ul>
         <li v-for="message in messages" class="ligne">
           <div>
@@ -11,7 +15,7 @@
             <p>{{ message.body }}</p>
           </div>
           <div class="se">
-            <button v-on:click="(e) => { onDeleteId(e, message._id) }">X</button>
+            <button @click="(e) => { onDeleteId(e, message._id) }">X</button>
           </div>
         </li>
       </ul>
@@ -35,11 +39,14 @@ import feathers from '@feathersjs/client'
 import socketio from '@feathersjs/socketio-client'
 import io from 'socket.io-client'
 
-//const socket = io('http://127.0.0.1:3030');
-const socket = io('app.proj6ct.com');
+const socket = io('http://localhost:3030');
+//const socket = io('app.proj6ct.com');
 const app = feathers();
 app.configure(feathers.socketio(socket));
 const messageService = app.service('doubleendservicea');
+
+import { mapState } from 'vuex'
+import { mapMutations } from 'vuex'
 
 export default {
   data() {
@@ -57,6 +64,7 @@ export default {
       })
   },
   methods: {
+    ...mapMutations(['navigationSwitch']),
     onPost(e) {
       if (this.myName && this.myMessage) { 
         messageService.create({
@@ -94,6 +102,7 @@ export default {
     })
   },
   computed: {
+    ...mapState(['navig']),
     avecS() {
       return (this.messages.length === 1) ? '' : 's';
     }
@@ -101,107 +110,3 @@ export default {
 }
 
 </script>
-
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    font-size: 16px;
-  }
-  @media all and (max-width: 599px) {
-    div.main {
-      margin: 20px;
-    }
-  }
-  @media all and (min-width: 600px) {
-    div.main {
-      margin: 40px;
-    }
-  }
-  h1 {
-    margin-bottom: 0px;
-  }
-  h1.marge {
-    margin-bottom: 20px;
-  }
-  ul {
-    margin: 0;
-    padding: 0;
-  }
-  li {
-    position: relative;
-  }
-  li div {
-    display: inline-block;
-  }
-  li div:not(.se) {
-    padding-right: 40px;
-  }
-  li div.se {
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
-  }
-  li div button {
-    margin: 0 0 5px;
-    padding: 5px 10px;
-    border-radius: 7px;
-    font-size: 1.2em;
-  }
-  p {
-    margin: 6px 0;
-    word-wrap: break-word;
-    white-space: pre-wrap;
-  }
-  p.light {
-    color: #F99;
-  }
-  form input {
-    display: block;
-    width: calc(100%-20px);
-    padding: 10px;
-    background-color: #EEE;
-    border: 0px;
-    border-bottom: 1px solid #009;
-    margin-bottom: 20px;
-    font-size: 1.2em;
-  }
-  form textarea {
-    display: block;
-    width: calc(100%-20px);
-    padding: 10px;
-    background-color: #EEE;
-    border: 0px;
-    border-bottom: 1px solid #009;
-    font-size: 1.2em;
-    resize: none;
-  }
-  form button {
-    padding: 20px;
-    background-color: #009;
-    font-size: 1.2em;
-  }
-  form button:hover {
-      background-color: #03F;
-  }
-  button {
-    margin: 20px 0;
-    padding: 10px 20px;
-    color: #FFF;
-    background-color: #900;
-    border-radius: 10px;
-    border-width: 0;
-    font-size: 1em;
-  }
-
-  button:hover {
-      background-color: #F30;
-  }
-
-  .ligne {
-    list-style: none;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #CCC;
-  }
-</style>

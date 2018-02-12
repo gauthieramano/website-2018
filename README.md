@@ -7,6 +7,9 @@ https://app.proj6ct.com
 
 #### This project uses these technologies:
 - [Vue.js](https://vuejs.org)
+- [Vuex](https://vuex.vuejs.org/en)
+- [Vuetify](https://vuetifyjs.com)
+- [Stylus](http://stylus-lang.com)
 - [Node.js](https://nodejs.org)
 - [Feathers](http://feathersjs.com)
 - [Nuxt](https://nuxtjs.org)
