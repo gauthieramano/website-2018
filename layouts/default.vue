@@ -37,7 +37,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar color="indigo" dark fixed app height="100px">
+    <v-toolbar color="indigo" dark fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>PROJ9CT</v-toolbar-title>
     </v-toolbar>
