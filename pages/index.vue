@@ -39,8 +39,8 @@ import feathers from '@feathersjs/client'
 import socketio from '@feathersjs/socketio-client'
 import io from 'socket.io-client'
 
-const socket = io('http://localhost:3030');
-//const socket = io('app.proj6ct.com');
+//const socket = io('http://localhost:3030');
+const socket = io('app.proj6ct.com');
 const app = feathers();
 app.configure(feathers.socketio(socket));
 const messageService = app.service('doubleendservicea');
