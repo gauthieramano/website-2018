@@ -1,8 +1,11 @@
 <template>
   <div class="main">
-    <div class="pointer" @click="navigationSwitch">
-      <v-icon v-if="navig" large>label</v-icon>
-      <v-icon v-else large>label_outline</v-icon>
+    <div class="pointer flex-container" @click="navigationSwitch">
+      <div class="icon-pointer">
+        <v-icon v-if="navig" large>label</v-icon>
+        <v-icon v-else large>label_outline</v-icon>
+      </div>
+      <div>Cette page est faite pour afficher et supprimer des messages. Vous êtes libres de faire ce que vous voulez.</div>
     </div>
     <template v-if="messages.length > 0">
       <h1>Message{{ avecS }}</h1>
@@ -59,7 +62,7 @@ export default {
   asyncData() {
     return messageService.find()
       .then((response) => {
-        console.log('ASYNDDATA ', response.data);
+//        console.log('ASYNDDATA ', response.data);
         return { messages: response.data }
       })
   },
@@ -79,7 +82,7 @@ export default {
       messageService.find()
         .then((response) => {
           response.data.forEach((element) => {
-            console.log('EACH ', element._id);
+//            console.log('EACH ', element._id);
             messageService.remove(element._id);
           })
         })
@@ -91,11 +94,11 @@ export default {
   },
   mounted() {
     messageService.on('created', (message) => {
-      console.log('ADD ', message);
+//      console.log('ADD ', message);
       this.messages.push(message);
     }),
     messageService.on('removed', (message) => {
-      console.log('REMOVED ', message);
+//      console.log('REMOVED ', message);
       this.messages = this.messages.filter((element) => {
         return (element._id !== message._id);
       })
