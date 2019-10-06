@@ -12,13 +12,13 @@
 
       <button @click="onDelete">Supprimer le{{ avecS }} message{{ avecS }}</button>
       <ul>
-        <li v-for="message in messages" class="ligne">
+        <li v-for="message in messages" class="ligne" :key="message.id">
           <div>
             <p class="light">{{ message.name }}</p>
             <p>{{ message.body }}</p>
           </div>
           <div class="se">
-            <button @click="(e) => { onDeleteId(e, message._id) }">X</button>
+            <button @click="(e) => { onDeleteId(e, message.id) }">X</button>
           </div>
         </li>
       </ul>
@@ -29,7 +29,7 @@
     </template>
 
     <form @submit.prevent="onPost">
-      <input type="text" placeholder="nom" v-model="myName">
+      <input type="text" placeholder="nom" v-model="myName" />
       <textarea rows="5" placeholder="message..." v-model="myMessage"></textarea>
       <button type="submit">Envoyer</button>
     </form>
@@ -37,79 +37,75 @@
 </template>
 
 <script>
+import feathers from "@feathersjs/client";
+import socketio from "@feathersjs/socketio-client";
+import io from "socket.io-client";
 
-import feathers from '@feathersjs/client'
-import socketio from '@feathersjs/socketio-client'
-import io from 'socket.io-client'
-
-//const socket = io('http://localhost:3030');
+// const socket = io("http://localhost:3030");
 const socket = io('app.proj6ct.com');
 const app = feathers();
 app.configure(feathers.socketio(socket));
-const messageService = app.service('doubleendservicea');
+const messageService = app.service("inmemoryservice");
 
-import { mapState } from 'vuex'
-import { mapMutations } from 'vuex'
+import { mapState } from "vuex";
+import { mapMutations } from "vuex";
 
 export default {
   data() {
     return {
       messages: [],
-      myName: '',
-      myMessage: ''
-    }
+      myName: "",
+      myMessage: ""
+    };
   },
   asyncData() {
-    return messageService.find()
-      .then((response) => {
-//        console.log('ASYNDDATA ', response.data);
-        return { messages: response.data }
-      })
+    return messageService.find().then(response => {
+      return { messages: response.data };
+    });
   },
   methods: {
-    ...mapMutations(['navigationSwitch']),
+    ...mapMutations(["navigationSwitch"]),
     onPost(e) {
-      if (this.myName && this.myMessage) { 
-        messageService.create({
-          name: this.myName,
-          body: this.myMessage
-        }).then(() => {
-          this.myMessage = '';
-        })
+      if (this.myName && this.myMessage) {
+        messageService
+          .create({
+            name: this.myName,
+            body: this.myMessage
+          })
+          .then((aaa) => {
+            this.myMessage = "";
+          });
       }
     },
     onDelete(e) {
-      messageService.find()
-        .then((response) => {
-          response.data.forEach((element) => {
-//            console.log('EACH ', element._id);
-            messageService.remove(element._id);
-          })
-        })
+      messageService.find().then(response => {
+        response.data.forEach(element => {
+          messageService.remove(element.id);
+        });
+      });
     },
     onDeleteId(e, arg) {
-      console.log('onDeleteId ', arg);
+      console.log("onDeleteId ", arg);
       messageService.remove(arg);
     }
   },
   mounted() {
-    messageService.on('created', (message) => {
-//      console.log('ADD ', message);
+    messageService.on("created", message => {
+      // console.log('ADD ', message);
       this.messages.push(message);
     }),
-    messageService.on('removed', (message) => {
-//      console.log('REMOVED ', message);
-      this.messages = this.messages.filter((element) => {
-        return (element._id !== message._id);
-      })
-    })
+      messageService.on("removed", message => {
+        // console.log('REMOVED ', message);
+        this.messages = this.messages.filter(element => {
+          return element.id !== message.id;
+        });
+      });
   },
   computed: {
-    ...mapState(['navig']),
+    ...mapState(["navig"]),
     avecS() {
-      return (this.messages.length === 1) ? '' : 's';
+      return this.messages.length === 1 ? "" : "s";
     }
   }
-}
-
+};
 </script>

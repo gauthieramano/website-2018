@@ -10,17 +10,15 @@
 </template>
 
 <script>
-
-import { mapState } from 'vuex'
-import { mapMutations } from 'vuex'
+import { mapState } from "vuex";
+import { mapMutations } from "vuex";
 
 export default {
   methods: {
-    ...mapMutations(['navigationSwitch'])
+    ...mapMutations(["navigationSwitch"])
   },
   computed: {
-    ...mapState(['navig'])
+    ...mapState(["navig"])
   }
-}
-
+};
 </script>
