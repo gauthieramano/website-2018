@@ -1,21 +1,19 @@
 <template>
   <div>
-    <Navigation/>
-    <Toolbar/>
-    <nuxt/>
+    <Navigation />
+    <Toolbar />
+    <nuxt />
   </div>
 </template>
 
 <script>
-
-import Navigation from '~/components/Navigation.vue'
-import Toolbar from '~/components/Toolbar.vue'
+import Navigation from "~/components/Navigation.vue";
+import Toolbar from "~/components/Toolbar.vue";
 
 export default {
   components: {
     Navigation,
-    Toolbar
-  }
-}
-
+    Toolbar,
+  },
+};
 </script>

@@ -15,10 +15,10 @@ import { mapMutations } from "vuex";
 
 export default {
   methods: {
-    ...mapMutations(["navigationSwitch"])
+    ...mapMutations(["navigationSwitch"]),
   },
   computed: {
-    ...mapState(["navig"])
-  }
+    ...mapState(["navig"]),
+  },
 };
 </script>

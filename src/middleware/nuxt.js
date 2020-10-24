@@ -11,7 +11,7 @@ if (config.dev) {
   new Builder(nuxt)
     .build()
     .then(() => process.emit("nuxt:build:done"))
-    .catch(error => {
+    .catch((error) => {
       logger.error(error);
       process.exit(1);
     });

@@ -3,20 +3,19 @@ module.exports = {
    * Application configuration section
    * http://pm2.keymetrics.io/docs/usage/application-declaration/
    */
-  apps : [
-
+  apps: [
     // First application
     {
-      name      : 'website',
-      script    : 'src/',
-      env : {
-        NODE_ENV: 'production'
+      name: "website",
+      script: "src/",
+      env: {
+        NODE_ENV: "production",
       },
-      env_dev : {
-        NODE_ENV: 'development'
-      }
-    }
-  ]
+      env_dev: {
+        NODE_ENV: "development",
+      },
+    },
+  ],
 
   /**
    * Deployment section

@@ -1,9 +1,5 @@
 <template>
-  <v-navigation-drawer
-    fixed
-    v-model="navig"
-    app
-  >
+  <v-navigation-drawer fixed v-model="navig" app>
     <v-list dense>
       <v-list-tile>
         <v-list-tile-action>
@@ -26,28 +22,26 @@
 </template>
 
 <script>
-
 //import { mapState } from 'vuex'
 
 export default {
   computed: {
     navig() {
-      return null//this.$store.state.navig
-    }
+      return null; //this.$store.state.navig
+    },
   },
   // fetch(context) is called by the server-side
   // and nuxt before instantiating the component
-//  fetch({ store }) {
-//    store.commit('navigationSwitch')
-//  },
-//  computed: mapState([
-//    'navigation'
-//  ]),
-//  methods: {
-//    navigationSwitch() {
-//      this.$store.commit('navigationSwitch')
-//    }
-//  }
-}
-
+  //  fetch({ store }) {
+  //    store.commit('navigationSwitch')
+  //  },
+  //  computed: mapState([
+  //    'navigation'
+  //  ]),
+  //  methods: {
+  //    navigationSwitch() {
+  //      this.$store.commit('navigationSwitch')
+  //    }
+  //  }
+};
 </script>

@@ -1,16 +1,16 @@
-import Vuex from 'vuex'
+import Vuex from "vuex";
 
 const createStore = () => {
   return new Vuex.Store({
     state: {
-      navig: false
+      navig: false,
     },
     mutations: {
-      navigationSwitch (state) {
-        state.navig = !state.navig
-      }
-    }
-  })
-}
+      navigationSwitch(state) {
+        state.navig = !state.navig;
+      },
+    },
+  });
+};
 
-export default createStore
+export default createStore;

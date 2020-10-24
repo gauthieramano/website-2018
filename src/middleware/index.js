@@ -11,7 +11,7 @@ const notFound = require("@feathersjs/errors/not-found");
 
 const { render } = require("./nuxt"); // <- Require the middleware
 
-module.exports = function() {
+module.exports = function () {
   // Add your custom middleware here. Remember, that
   // in Express the order matters, `notFound` and
   // the error handler have to go last.
@@ -74,13 +74,13 @@ const mList = (keys, key, type, show) => {
     console.log(`     ${type}   *   ${key}   ..........   ${val}`);
 };
 
-const myLog = req => {
-  Object.keys(req).forEach(key => {
+const myLog = (req) => {
+  Object.keys(req).forEach((key) => {
     if (typeof req[key] === "string") {
       console.log(`- ${key} : ${req[key]}`);
     } else {
       if (key === "headers") {
-        Object.keys(req[key]).forEach(k => mList(req[key], k, "head "));
+        Object.keys(req[key]).forEach((k) => mList(req[key], k, "head "));
         // } else if (key === "rawHeaders") {
         //   Object.keys(req[key]).forEach(k => mList(req[key], k, "Raw H"));
         // } else if (key === "req") {
@@ -94,7 +94,7 @@ const myLog = req => {
       } else if (key === "body") {
         console.log("::::: BODY :::::");
         // console.log(`      *** ${key} --- ${typeof req[key]}`);
-        Object.keys(req[key]).forEach(k => mList(req[key], k, "body ", true));
+        Object.keys(req[key]).forEach((k) => mList(req[key], k, "body ", true));
         // } else if (key === "params") {
         //   Object.keys(req[key]).forEach(k => mList(req[key], k, "param"));
         // } else if (key === "query") {

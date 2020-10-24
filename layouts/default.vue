@@ -1,13 +1,14 @@
-
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer
-      fixed
-      v-model="drawer"
-      app
-    >
+    <v-navigation-drawer fixed v-model="drawer" app>
       <v-list dense>
-        <v-list-tile @click="(e) => { onNavig(e, '/') }">
+        <v-list-tile
+          @click="
+            (e) => {
+              onNavig(e, '/');
+            }
+          "
+        >
           <v-list-tile-action>
             <v-icon>home</v-icon>
           </v-list-tile-action>
@@ -16,8 +17,13 @@
           </v-list-tile-content>
         </v-list-tile>
 
-
-        <v-list-tile @click="(e) => { onNavig(e, '/about') }">
+        <v-list-tile
+          @click="
+            (e) => {
+              onNavig(e, '/about');
+            }
+          "
+        >
           <v-list-tile-action>
             <v-icon>account_box</v-icon>
           </v-list-tile-action>
@@ -26,7 +32,13 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile @click="(e) => { onNavig(e, '/contact') }">
+        <v-list-tile
+          @click="
+            (e) => {
+              onNavig(e, '/contact');
+            }
+          "
+        >
           <v-list-tile-action>
             <v-icon>email</v-icon>
           </v-list-tile-action>
@@ -44,13 +56,8 @@
 
     <v-content>
       <v-container fluid fill-height>
-        <v-layout
-          justify-center
-          align-center
-        >
-
-          <nuxt/>
-
+        <v-layout justify-center align-center>
+          <nuxt />
         </v-layout>
       </v-container>
     </v-content>
@@ -61,14 +68,14 @@
 </template>
 
 <script>
-  export default {
-    data: () => ({
-      drawer: null
-    }),
-    methods: {
-      onNavig(e, arg) {
-      	this.$router.push(arg);
-      }
-    }
-  }
+export default {
+  data: () => ({
+    drawer: null,
+  }),
+  methods: {
+    onNavig(e, arg) {
+      this.$router.push(arg);
+    },
+  },
+};
 </script>

@@ -2,11 +2,11 @@
 const { Inmemoryservice } = require("./inmemoryservice.class");
 const hooks = require("./inmemoryservice.hooks");
 
-module.exports = function(app) {
+module.exports = function (app) {
   const paginate = app.get("paginate");
 
   const options = {
-    paginate
+    paginate,
   };
 
   // Initialize our service with any options it requires

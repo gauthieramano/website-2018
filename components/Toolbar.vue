@@ -19,23 +19,21 @@
 </template>
 
 <script>
-
 //import { mapState } from 'vuex'
 
 export default {
   // fetch(context) is called by the server-side
   // and nuxt before instantiating the component
-//  fetch({ store }) {
-//    store.commit('navigationSwitch')
-//  },
-//  computed: mapState([
-//    'navigation'
-//  ]),
+  //  fetch({ store }) {
+  //    store.commit('navigationSwitch')
+  //  },
+  //  computed: mapState([
+  //    'navigation'
+  //  ]),
   methods: {
     navigationSwitch() {
-//      this.$store.commit('navigationSwitch')
-    }
-  }
-}
-
+      //      this.$store.commit('navigationSwitch')
+    },
+  },
+};
 </script>

@@ -24,6 +24,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "DEBUG=nuxt:* nodemon --watch src/ --watch config/ src/index.js",
+    "format": "prettier --write .",
     "test": "npm run build",
     "start": "NODE_ENV=production node src/"
   },
@@ -45,12 +46,12 @@
     "winston": "^2.4.5"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
+    "eslint": "^7.12.0",
     "eslint-config-prettier": "^6.14.0",
     "eslint-plugin-prettier": "^3.1.4",
     "mocha": "^4.1.0",
     "nodemon": "^1.19.4",
-    "prettier": "1.18.2",
+    "prettier": "2.1.2",
     "request": "^2.88.2",
     "request-promise": "^4.2.6",
     "stylus": "^0.54.8",

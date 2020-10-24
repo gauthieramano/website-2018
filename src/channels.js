@@ -1,12 +1,12 @@
 /* eslint-disable no-console */
 
-module.exports = function(app) {
+module.exports = function (app) {
   if (typeof app.channel !== "function") {
     // If no real-time functionality has been configured just return
     return;
   }
 
-  app.on("connection", connection => {
+  app.on("connection", (connection) => {
     /*GA*/
     console.log(":: CHANNELS > CONNECTION ::");
     // On a new real-time connection, add it to the anonymous channel
