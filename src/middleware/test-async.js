@@ -3,9 +3,9 @@
     method: "POST",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({ fichier: "bonjour", content: "au revoir" })
+    body: JSON.stringify({ fichier: "bonjour", content: "au revoir" }),
   });
   const content = await rawResponse.json();
 

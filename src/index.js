@@ -8,7 +8,7 @@ process.on("unhandledRejection", (reason, p) => {
   logger.error("Unhandled Rejection at: Promise ", p, reason);
 });
 
-process.on("nuxt:build:done", err => {
+process.on("nuxt:build:done", (err) => {
   if (err) {
     logger.error(err);
   }

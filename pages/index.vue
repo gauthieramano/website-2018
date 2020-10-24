@@ -5,12 +5,17 @@
         <v-icon v-if="navig" large>label</v-icon>
         <v-icon v-else large>label_outline</v-icon>
       </div>
-      <div>Cette page est faite pour afficher et supprimer des messages. Vous êtes libres de faire ce que vous voulez.</div>
+      <div>
+        Cette page est faite pour afficher et supprimer des messages. Vous êtes
+        libres de faire ce que vous voulez.
+      </div>
     </div>
     <template v-if="messages.length > 0">
       <h1>Message{{ avecS }}</h1>
 
-      <button @click="onDelete">Supprimer le{{ avecS }} message{{ avecS }}</button>
+      <button @click="onDelete">
+        Supprimer le{{ avecS }} message{{ avecS }}
+      </button>
       <ul>
         <li v-for="message in messages" class="ligne" :key="message.id">
           <div>
@@ -18,7 +23,15 @@
             <p>{{ message.body }}</p>
           </div>
           <div class="se">
-            <button @click="(e) => { onDeleteId(e, message.id) }">X</button>
+            <button
+              @click="
+                (e) => {
+                  onDeleteId(e, message.id);
+                }
+              "
+            >
+              X
+            </button>
           </div>
         </li>
       </ul>
@@ -30,7 +43,11 @@
 
     <form @submit.prevent="onPost">
       <input type="text" placeholder="nom" v-model="myName" />
-      <textarea rows="5" placeholder="message..." v-model="myMessage"></textarea>
+      <textarea
+        rows="5"
+        placeholder="message..."
+        v-model="myMessage"
+      ></textarea>
       <button type="submit">Envoyer</button>
     </form>
   </div>
@@ -42,7 +59,7 @@ import socketio from "@feathersjs/socketio-client";
 import io from "socket.io-client";
 
 // const socket = io("http://localhost:3030");
-const socket = io('app.proj6ct.com');
+const socket = io("app.proj6ct.com");
 const app = feathers();
 app.configure(feathers.socketio(socket));
 const messageService = app.service("inmemoryservice");
@@ -55,11 +72,11 @@ export default {
     return {
       messages: [],
       myName: "",
-      myMessage: ""
+      myMessage: "",
     };
   },
   asyncData() {
-    return messageService.find().then(response => {
+    return messageService.find().then((response) => {
       return { messages: response.data };
     });
   },
@@ -70,7 +87,7 @@ export default {
         messageService
           .create({
             name: this.myName,
-            body: this.myMessage
+            body: this.myMessage,
           })
           .then((aaa) => {
             this.myMessage = "";
@@ -78,8 +95,8 @@ export default {
       }
     },
     onDelete(e) {
-      messageService.find().then(response => {
-        response.data.forEach(element => {
+      messageService.find().then((response) => {
+        response.data.forEach((element) => {
           messageService.remove(element.id);
         });
       });
@@ -87,16 +104,16 @@ export default {
     onDeleteId(e, arg) {
       console.log("onDeleteId ", arg);
       messageService.remove(arg);
-    }
+    },
   },
   mounted() {
-    messageService.on("created", message => {
+    messageService.on("created", (message) => {
       // console.log('ADD ', message);
       this.messages.push(message);
     }),
-      messageService.on("removed", message => {
+      messageService.on("removed", (message) => {
         // console.log('REMOVED ', message);
-        this.messages = this.messages.filter(element => {
+        this.messages = this.messages.filter((element) => {
           return element.id !== message.id;
         });
       });
@@ -105,7 +122,7 @@ export default {
     ...mapState(["navig"]),
     avecS() {
       return this.messages.length === 1 ? "" : "s";
-    }
-  }
+    },
+  },
 };
 </script>
