@@ -1,11 +1,14 @@
 //GA NUXT CREATION
 // your-app/src/middleware/index.js
 
+const { exec } = require("child_process");
+const { promisify } = require("util");
+
 ////const handler = require('feathers-errors/handler');
 ////const notFound = require('feathers-errors/not-found');
 //const express = require('@feathersjs/express');
 const handler = require("@feathersjs/errors/handler");
-const notFound = require("@feathersjs/errors/not-found");
+// const notFound = require("@feathersjs/errors/not-found");
 
 // const fs = require("fs"); // GA text route
 
@@ -16,6 +19,49 @@ module.exports = function () {
   // in Express the order matters, `notFound` and
   // the error handler have to go last.
   const app = this;
+
+  app.use("/info", async (req, res) => {
+    let memory;
+
+    try {
+      const promisedExec = promisify(exec);
+      const { stderr, stdout } = await promisedExec("df -h");
+
+      memory = stderr ? stderr : stdout;
+    } catch (error) {
+      memory = `error: ${error.message}`;
+    }
+
+    let stat;
+
+    try {
+      const promisedExec = promisify(exec);
+      const { stderr, stdout } = await promisedExec("vmstat");
+
+      stat = stderr ? stderr : stdout;
+    } catch (error) {
+      stat = `error: ${error.message}`;
+    }
+
+    res.send(`<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PROJ9CT</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+        <style>
+          @media (prefers-color-scheme: dark) { body { background-color: #444; color: #CCC; } }
+        </style>
+      </head>
+      <body>
+        <pre style="font-family: 'Source Code Pro', monospace; font-size: 1.5em;">${memory}
+${stat}</pre>
+      </body>
+    </html>`);
+  });
 
   // Use Nuxt's render middleware
   app.use((req, res, next) => {
